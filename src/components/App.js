@@ -4,24 +4,28 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      para: ""
+      clicked: false
     };
-    this.handleClick = this.handleClick.bind(this);
+    this._onButtonClick = this._onButtonClick.bind(this);
   }
-
-  handleClick() {
+  _onButtonClick() {
     this.setState({
-      para: `Hello, I've learnt to use the full-stack evaluation tool. This makes me so happy`
+      clicked: true
     });
   }
   render() {
     return (
       <div id="main">
         {/* Do not remove this main div!! */}
-        <button id="click" onClick={this.handleClick}>
+        <button id="click" onClick={this._onButtonClick}>
           click
         </button>
-        <p id="para">{this.state.para}</p>
+        {this.state.clicked ? (
+          <p id="para">
+            Hello, I've learnt to use the full-stack evaluation tool. This makes
+            me so happy
+          </p>
+        ) : null}
       </div>
     );
   }
